@@ -1,0 +1,48 @@
+const int BOTON = 13;     //  pushbutton pin 13
+const int rojo =  10;      // LED ROJO CONECTAFO A Pin 10
+const int Amarillo =  11; //LED AMARILLO CONECTAFO A Pin 11
+const int verde = 12;    //LED VERDE CONECTAFO A Pin 12
+
+int buttonState = 0;     //CONTADOR
+
+void setup() {
+//SALIDAS DE LOS LED Y DEL BOTON
+  pinMode(rojo, OUTPUT);
+  pinMode(Amarillo, OUTPUT);
+  pinMode(verde, OUTPUT);
+  pinMode(BOTON, INPUT);
+}
+
+void loop() {
+  // LEE EL ESTADO DEL BOTON 
+  buttonState = digitalRead(BOTON);
+
+  //  SI CONDICIONAL  EL BOTON ESTÁ PRESIONADO EJECUTE LO SIGUIENTE 
+  if (buttonState == LOW) {
+   
+   //ENCIENDE LUZ ROJA POR 3 SEGUNDOS Y SE APAGA
+    digitalWrite(rojo, HIGH);
+    delay(3000);
+    digitalWrite(rojo, LOW);
+   
+    //ENCIENDE LUZ AMARILLA POR 2 SEGUNDOS Y SE APAGA
+    digitalWrite(Amarillo, HIGH);
+    delay(2000); 
+    digitalWrite(Amarillo, LOW);
+    
+    //ENCIENDE LUZ VERDE POR 3 SEGUNDOS Y SE APAGA
+    digitalWrite(verde, HIGH);
+    delay(3000);
+    digitalWrite(verde, LOW);
+
+
+  }
+  else {
+    // DE LO CONTRARIO BOTON NO PRESIONADO IMPLICA LUCES APAGADAS 
+
+    digitalWrite(Amarillo, LOW);
+    digitalWrite(verde, LOW);
+    digitalWrite(rojo, LOW);
+
+  }
+}
